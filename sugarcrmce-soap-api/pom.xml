@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>it.dontesta.sugarcrm.client.soap</groupId>
+	<artifactId>sugarcrmce-soap-api</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>SugarCRM Community Edition SOAP Client</name>
+	<description>Java SOAP Client for accessing Web Services exposed by SugarCRM. The client version of the framework is based on Apache Axis 1.4. The client was built on SugarCRM Community Edition 6.5 for API v4.
+For more information on the web services of SugarCRM and versioning APIs, refer to the official documentation of Sugar.</description>
+	<inceptionYear>2013</inceptionYear>
+	<organization>
+		<name>Antonio Musarra</name>
+		<url>http://www.dontesta.it</url>
+	</organization>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<licenses>
+		<license>
+			<name>GNU General Public License (GPLv3)</name>
+			<url>http://www.gnu.org/licenses/gpl-3.0-standalone.html</url>
+			<distribution>manual</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>amusarra</id>
+			<email>antonio.musarra@gmail.com</email>
+			<name>Antonio Musarra</name>
+			<url>http://www.dontesta.it</url>
+			<roles>
+				<role>Senior Architect</role>
+				<role>Senior Developer</role>
+			</roles>
+		</developer>
+	</developers>
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>shirus-labs-rep.dontesta.it</id>
+			<name>Shirus Labs Corporate Repository</name>
+			<url>ftp://www.dontesta.it/dontesta.it/projects/maven/repositories</url>
+			<layout>default</layout>
+		</repository>
+		<site>
+			<id>sugarcrmceesoapapi.dontesta.it</id>
+			<name>SugarCRM Community Edition 6.5 (v4.1 API) SOAP Client</name>
+			<url>ftp://www.dontesta.it/dontesta.it/projects/maven/sites/${project.artifactId}/</url>
+		</site>
+	</distributionManagement>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+		</plugins>
+	</reporting>
+	<dependencies>
+		<dependency>
+			<groupId>axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+		</dependency>
+	</dependencies>
+	<url>http://www.dontesta.it</url>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>axistools-maven-plugin</artifactId>
+				<version>1.4</version>
+				<dependencies>
+					<dependency>
+						<groupId>javax.activation</groupId>
+						<artifactId>activation</artifactId>
+						<version>1.1.1</version>
+					</dependency>
+					<dependency>
+						<groupId>com.sun.mail</groupId>
+						<artifactId>javax.mail</artifactId>
+						<version>1.5.0</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<sourceDirectory>src/main/resources/wsdl</sourceDirectory>
+					<testCases>true</testCases>
+					<serverSide>false</serverSide>
+					<useEmitter>true</useEmitter>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
